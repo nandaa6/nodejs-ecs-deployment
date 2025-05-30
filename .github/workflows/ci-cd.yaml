@@ -53,6 +53,6 @@ jobs:
       - name: Update ECS Services
         run: |
           aws ecs update-service \
-            --cluster healthcare-app-cluster \
+            --cluster hclbayer-app-cluster \
             --service patient-service \
             --force-new-deployment
