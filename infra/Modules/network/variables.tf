@@ -1,6 +1,6 @@
 variable "name" {
   type = string
-  default = "healthcare-app"
+  default = "hclbayer-app"
 }
 
 variable "cidr" {
