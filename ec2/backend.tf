@@ -1,4 +1,4 @@
-terraform {
+/*terraform {
   backend "s3" {
     bucket         = "terraform-statefile-learnine12" # change this
     key            = "statefile/terraform.tfstate"
@@ -6,4 +6,4 @@ terraform {
     encrypt        = true
     dynamodb_table = "terraform-lock-learnnine12"
   }
-}
+}*/

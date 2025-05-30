@@ -3,7 +3,7 @@ resource "aws_ecs_cluster" "main" {
 }
 
 resource "aws_lb" "main" {
-  name               = "${var.cluster_name}-alb"
+  name               = "${var.cluster_name}-alb-hcl"
   internal           = false
   load_balancer_type = "application"
   subnets            = var.alb_subnets
@@ -13,7 +13,7 @@ resource "aws_lb" "main" {
 }
 
 resource "aws_security_group" "alb_sg" {
-  name        = "${var.cluster_name}-alb-sg"
+  name        = "${var.cluster_name}-alb-hclsg"
   description = "Allow HTTP"
   vpc_id      = var.vpc_id
 
@@ -36,7 +36,7 @@ resource "aws_security_group" "alb_sg" {
 resource "aws_lb_target_group" "services" {
   for_each = { for c in var.container_definitions : c.name => c }
 
-  name        = "${each.value.name}-tg"
+  name        = "${each.value.name}-hcltg"
   port        = each.value.container_port
   protocol    = "HTTP"
   vpc_id      = var.vpc_id
@@ -130,7 +130,7 @@ resource "aws_ecs_service" "services" {
 }
 
 resource "aws_security_group" "ecs_service" {
-  name        = "${var.cluster_name}-ecs-sg"
+  name        = "${var.cluster_name}-ecs-hclsg"
   description = "Allow ECS service access"
   vpc_id      = var.vpc_id
 

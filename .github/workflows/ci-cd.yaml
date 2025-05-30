@@ -1,4 +1,4 @@
-name: CI/CD - Microservicess
+name: CI/CD - Microservices
 
 on:
 
@@ -10,7 +10,7 @@ on:
 
 env:
   AWS_REGION: us-east-1
-  ECR_PATIENT_REPO: patient-service
+  ECR_PATIENT_REPO: patient-service-bayer
   ECR_APPOINTMENT_REPO: appointment-service
 
 jobs:
@@ -30,7 +30,6 @@ jobs:
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v2
         with:
-
           role-to-assume: arn:aws:iam::575108929843:role/github-action-role
           aws-region: ${{ env.AWS_REGION }}
 
